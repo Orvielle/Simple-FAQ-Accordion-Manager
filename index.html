@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FAQ Desk — Accordion Manager</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="page">
+
+    <header class="masthead">
+      <p class="masthead__eyebrow">Knowledge Desk</p>
+      <h1 class="masthead__title">Frequently Asked Questions</h1>
+      <p class="masthead__sub">Add, arrange, and answer the questions your visitors actually ask.</p>
+    </header>
+
+    <main class="layout">
+
+      <!-- Add new FAQ -->
+      <section class="composer" aria-labelledby="composer-title">
+        <h2 id="composer-title" class="composer__title">New entry</h2>
+
+        <form id="faq-form" class="composer__form">
+          <label class="field">
+            <span class="field__label">Question</span>
+            <input
+              type="text"
+              id="question-input"
+              class="field__input"
+              placeholder="e.g. How do I reset my password?"
+              autocomplete="off"
+              required
+            />
+          </label>
+
+          <label class="field">
+            <span class="field__label">Answer</span>
+            <textarea
+              id="answer-input"
+              class="field__input field__input--area"
+              rows="3"
+              placeholder="Write a clear, friendly answer…"
+              required
+            ></textarea>
+          </label>
+
+          <button type="submit" class="btn btn--primary">
+            Add to list
+          </button>
+        </form>
+      </section>
+
+      <!-- Accordion list -->
+      <section class="board" aria-labelledby="board-title">
+        <div class="board__head">
+          <h2 id="board-title" class="board__title">Your FAQ list</h2>
+          <span class="board__count" id="faq-count">0 entries</span>
+        </div>
+
+        <ul id="faq-list" class="accordion" role="list">
+          <!-- FAQ items injected here by script.js -->
+        </ul>
+
+        <p id="empty-state" class="empty-state">
+          Nothing here yet — add your first question on the left.
+        </p>
+      </section>
+
+    </main>
+
+    <footer class="footnote">
+      <p>Tip: click a question to expand it. Entries are saved in this browser only.</p>
+    </footer>
+
+  </div>
+
+  <!-- Item template -->
+  <template id="faq-item-template">
+    <li class="accordion__item" data-id="">
+      <h3 class="accordion__heading">
+        <button type="button" class="accordion__trigger" aria-expanded="false">
+          <span class="accordion__index"></span>
+          <span class="accordion__question"></span>
+          <span class="accordion__icon" aria-hidden="true"></span>
+        </button>
+      </h3>
+      <div class="accordion__panel" role="region">
+        <div class="accordion__panel-inner">
+          <p class="accordion__answer"></p>
+          <div class="accordion__actions">
+            <button type="button" class="btn btn--ghost btn--small" data-action="edit">Edit</button>
+            <button type="button" class="btn btn--ghost btn--small btn--danger" data-action="delete">Delete</button>
+          </div>
+        </div>
+      </div>
+    </li>
+  </template>
+
+  <script src="script.js"></script>
+</body>
+</html>
